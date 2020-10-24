@@ -104,26 +104,26 @@
 
 <section class="works-section">
     <div class="container">
-        <h2 class="works-txt">od roku 2014 jsme pomohli více než :</h2>
+        <h2 class="works-txt"><?php the_field('stat_header'); ?></h2>
         <span class="underline"></span>
 
         <div class="numbers-animate row">
             <div id="circle" class="col-md-12 col-lg-3">
-                <span class="count">300</span>
+                <span class="count"><?php the_field('count_1'); ?></span>
                 <img src="wp-content/themes/apeos/img/icon-1.svg">
-                <p>Rodinám</p>
+                <p><?php the_field('scope_1'); ?></p>
             </div>
 
             <div id="circle" class="col-md-12 col-lg-3">
-                <span class="count">500</span>
+                <span class="count"><?php the_field('count_2'); ?></span>
                 <img src="wp-content/themes/apeos/img/icon-2.svg">
-                <p>Seniorů</p>
+                <p><?php the_field('scope_2'); ?></p>
             </div>
 
             <div id="circle" class="col-md-12 col-lg-3">
-                <span class="count">200</span>
+                <span class="count"><?php the_field('count_3'); ?></span>
                 <img src="wp-content/themes/apeos/img/icon-3.svg">
-                <p>Asistentkám</p>
+                <p><?php the_field('scope_3'); ?></p>
             </div> 
         </div>
 
@@ -134,7 +134,7 @@
 
 <section class="registrovat-section">
     <div class="container">
-        <h2 class="reg-text">Chci se registrovat:</h2>
+        <h2 class="reg-text"><?php the_field('call_to_action_one'); ?></h2>
 
         <div class="group-btn">
                 <a href="<?php the_field('button_link_one'); ?>" class="btn-main first-btn-bg"><?php the_field('button_text_one'); ?></a>
@@ -144,59 +144,52 @@
 </section>
 
 <section>
-    <div class="container-fluid">
-            <div class="flexslider">
-                <ul class="slides ">
-                    <li class="row">
-                        <div class="slide-photo col-md-12 col-lg-6">
-                            <img src="wp-content/themes/apeos/img/q-photo.jpg">
-                        </div>
-                        <blockquote class="quote  col-md-12 col-lg-6">
-                            <p class="italic-style">S překlady Vaší firmy jsme velice spokojeni. Protože Vás využíváme hlavně k překladu E-mailové korespondence, musíme ocenit rychlost, s jakou reagujete na naše požadavky. Můžeme Vaše služby velice doporučit.
-                            </p>
+<div class="container-fluid">
 
-                            <p class="sm-bold">Miroslav CHLUBNA, za kolektiv pracovníku firmy NOVATRONIC</p>
-                        </blockquote>
-                    </li>
+<div class="flexslider">
+    <ul class="slides ">
+        <?php 
 
-                    <li class="row">
-                        <div class="slide-photo  col-md-12 col-lg-6">
-                            <img src="wp-content/themes/apeos/img/q-photo2.jpg">
-                        </div>
-                        <blockquote class="quote-bg  col-md-12 col-lg-6">
-                            <p class="italic-style">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec sed odio dui. Aenean eu leo quam
-                            </p>
+            $posts = get_posts( array(
+                'numberposts' => 6,
+                'category_name'    => 'slider',
+                'orderby'     => 'date',
+                'order'       => 'DESC',
+                'include'     => array(),
+                'exclude'     => array(),
+                'meta_key'    => '',
+                'meta_value'  =>'',
+                'post_type'   => 'post',
+                'suppress_filters' => true, 
+            ) );
 
-                            <p class="sm-bold">Susan Sims, Interaction Designer at XYZ</p>
-                        </blockquote>
-                    </li>
+            foreach( $posts as $post ){
+                setup_postdata($post);
+                
 
-                    <li class="row">
-                        <div class="slide-photo  col-md-12 col-lg-6">
-                            <img src="wp-content/themes/apeos/img/q-photo.jpg">
-                        </div>
-                        <blockquote class="quote  col-md-12 col-lg-6">
-                            <p class="italic-style">S překlady Vaší firmy jsme velice spokojeni. Protože Vás využíváme hlavně k překladu E-mailové korespondence, musíme ocenit rychlost, s jakou reagujete na naše požadavky. Můžeme Vaše služby velice doporučit.
-                            </p>
+        ?>
+        <li class="row">
 
-                            <p class="sm-bold">Miroslav CHLUBNA, za kolektiv pracovníku firmy NOVATRONIC</p>
-                        </blockquote>
-                    </li>
-
-                    <li class="row">
-                        <div class="slide-photo  col-md-12 col-lg-6">
-                            <img src="wp-content/themes/apeos/img/q-photo2.jpg">
-                        </div>
-                        <blockquote class="quote-bg  col-md-12 col-lg-6">
-                            <p class="italic-style">“Integer posuere erat a ante venenatis dapibus posuere velit
-                                aliquet. Donec sed odio dui. Aenean eu leo quam...”
-                            </p>
-                            <p class="sm-bold">Susan Sims, Interaction Designer at XYZ</p>
-                        </blockquote>
-                    </li>
-                </ul>
+            <div class="slide-photo col-md-12 col-lg-6">
+                <img src="<?php the_post_thumbnail_url(); ?> ">
             </div>
-        </div>
+
+            <blockquote class="quote  col-md-12 col-lg-6">
+                <p class="italic-style"><?php the_content(); ?>
+                </p>
+
+                <p class="sm-bold"><?php the_title(); ?></p>
+            </blockquote>
+        </li>
+        <?php
+
+            }
+            wp_reset_postdata(); // сброс
+
+        ?>
+    </ul>
+</div>
+</div>
 </section>
 
 <?php

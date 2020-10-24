@@ -5,6 +5,9 @@ $(document).ready(function() {
         animation: "fade",
         directionNav: false,
     });
+
+    $(".slides blockquote:odd").removeClass('quote');
+    $(".slides blockquote:odd").addClass('quote-bg');
 });
 
 (function ($) {
