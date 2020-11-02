@@ -27,5 +27,41 @@ add_theme_support( 'custom-logo', [
 add_theme_support( 'post-thumbnails' );
 
 
+
+
+register_sidebar(array(
+    'name' => 'Footer Header',
+    'id' => 'footer-1',
+	'class' => '',
+    'description' => '',
+    'before_widget' => '',
+    'after_widget' => '',
+    'before_title' => '',
+    'after_title' => '',
+));
+
+register_sidebar(array(
+    'name' => 'Footer Link',
+    'id' => 'footer-2',
+	'class' => '',
+    'description' => '',
+    'before_widget' => '',
+    'after_widget' => '',
+    'before_title' => '',
+    'after_title' => '',
+));
+
+function footer_1() {
+	if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-1') ) : 
+		endif;
+}
+	 
+function footer_2() {
+	if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-2') ) : 
+		endif;
+}
+	
+    
+
 ?>
 
