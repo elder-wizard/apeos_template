@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="container">
         <p><?php footer_1(); ?></p>
-        <a class="web-link" href="<?php footer_2(); ?>" target="blank"><?php footer_2(); ?></a>
+        <a class="web-link" href="http://<?php footer_2(); ?>" target="blank"><?php footer_2(); ?></a>
     </div>
 </footer>
 <?php 
